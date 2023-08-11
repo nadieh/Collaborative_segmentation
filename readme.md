@@ -1,4 +1,3 @@
-# !
 
 # Collaborative segmentation method using uncertainty-guided annotation sampling
 
