@@ -2,7 +2,7 @@
 # Collaborative segmentation method using uncertainty-guided annotation sampling
 
 
-![overview](images\overview.PNG)
+![Overview](images\overview.PNG)
 
 
 ## 
