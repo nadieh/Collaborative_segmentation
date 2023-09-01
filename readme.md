@@ -1,24 +1,35 @@
+# Collaborative Segmentation Method Using Uncertainty-Guided Annotation Sampling
+## Human-in-the-Loop Deep Learning for Digital Pathology
 
-# Collaborative segmentation method using uncertainty-guided annotation sampling
+### Overview
 
-This project introduces a novel human-in-the-loop deep learning pipeline aimed at enhancing the efficiency and accuracy of cancer cell segmentation in digital pathology. By incorporating per-pixel and local-level model uncertainty, the pipeline provides valuable insights into model limitations, enabling pathologists to make more informed diagnoses. Our results demonstrate that using fewer annotated samples can still yield higher segmentation performance when focusing on out-of-domain areas identified by model uncertainty
+This project introduces a novel human-in-the-loop deep learning pipeline for enhancing the efficiency and accuracy of cancer cell segmentation in digital pathology. 
 
+- **Efficiency and Accuracy**: Utilizes per-pixel and local-level model uncertainty to guide the annotation process.
+- **Informed Decision-making**: Provides pathologists with valuable insights into the model's limitations.
+- **Out-of-Domain Handling**: Specifically designed to handle Out-of-Domain (OOD) scenarios commonly encountered in medical data.
 
-We address the challenge of handling out-of-domain (OOD) scenarios in medical data using a human-in-the-loop approach. Our model is trained on Whole Slide Images (WSIs) and incorporates uncertainty measurements to identify and correct misclassifications.
+### Results
 
-An adapted version of nnUNet, specifically tuned for pathology data 
+Our pipeline demonstrates that using fewer annotated samples can still yield higher segmentation performance. This is achieved by focusing on out-of-domain areas identified through model uncertainty measurements.
+
+### Model and Training
+
+The pipeline employs five ensemble models of an adapted version of nnUNet, specifically tuned for pathology data for both segmentation and uncertainty measurements.
+
+- **Data**: Trained on Whole Slide Images (WSIs).
+- **Uncertainty Measurements**: Incorporates uncertainty to identify and correct misclassifications.
+
+> **Note**: This pipeline is flexible; you can substitute nnUNet with any other network that provides uncertainty measurements.
+
 [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
 
+### Quickstart Guide
 
+1. **Prepare Your Dataset**:  
+   ```bash
+   python3 create_training.py
 
-Data: 137 WSIs from RUMC, part of Camelyon 16; tested on 75 WSIs from Camelyon 17.
-Patch Size: $1024\times 1024$ pixels.
-Training: 5-fold cross-validation; batch size of 2.
-We quantify uncertainty based on the internal disagreement among the 5-folds. Patches with high uncertainty are flagged for user review. The corrected data is then used to retrain the model, improving its performance iteratively.
-
-** git clone https://github.com/YourUsername/YourRepoName.git **
-
-This condensed version maintains the essence and critical points of your original text. Feel free to use or adjust as you see fit.
 ![Overview](images/overview.PNG)
 
 
