@@ -6,7 +6,7 @@ This project introduces a novel human-in-the-loop deep learning pipeline aimed a
 
 We address the challenge of handling out-of-domain (OOD) scenarios in medical data using a human-in-the-loop approach. Our model is trained on Whole Slide Images (WSIs) and incorporates uncertainty measurements to identify and correct misclassifications.
 
-Model: An adapted version of nnUNet, specifically tuned for pathology data 
+An adapted version of nnUNet, specifically tuned for pathology data 
 [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
 
 Data: 137 WSIs from RUMC, part of Camelyon 16; tested on 75 WSIs from Camelyon 17.
