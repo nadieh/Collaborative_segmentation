@@ -23,6 +23,7 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 > **Note**: This pipeline is flexible; you can substitute nnUNet with any other network that provides uncertainty measurements.
 
 [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
+![Overview](images/overview.PNG)
 
 ### Quickstart Guide
 
@@ -30,11 +31,25 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
    ```bash
    python3 create_training.py
 
-![Overview](images/overview.PNG)
+2. **Train the ensembles of the segmentation network**:
+   
+   ```bash nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0 to 4
+   
+ 3. **Compute uncertainty on new domain**:
+       python3 nnunet_inference.py folder taskname 
 
-
-
+ 4. **Compute uncertainty on new domain**:
+       python3 uncertainty_sampling.py
+5. **Retrain the egmentation network with in-domain and out-of-domain samples**:
+   
+   ```bash nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0
+   
+ 3. **Test**:
+       python3 nnunet_inference.py folder taskname
+    
 ## Quickstart guide
 
 The collaborative is based on certainty and is flexible to adapt it to the certainty of your choice. We suggest to use nnunet segmentation with five folds and apply on your 
+
+
 
