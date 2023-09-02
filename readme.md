@@ -56,6 +56,6 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
    python3 nnunet_inference.py folder taskname
 
 
-## Quickstart guide
+### Quickstart guide
 The framework is modular and adaptable. We recommend using nnUNet with five-folds for segmentation and applying your specific uncertainty measurements for maximum effectiveness.
 
