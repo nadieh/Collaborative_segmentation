@@ -8,7 +8,11 @@ This project introduces a novel human-in-the-loop deep learning pipeline for enh
 - **Efficiency and Accuracy**: Utilizes per-pixel and local-level model uncertainty to guide the annotation process.
 - **Informed Decision-making**: Provides pathologists with valuable insights into the model's limitations.
 - **Out-of-Domain Handling**: Specifically designed to handle Out-of-Domain (OOD) scenarios commonly encountered in medical data.
-
+## Data
+[Camelyon](https://camelyon17.grand-challenge.org/)
+In our study, we employed the Camelyon dataset, focusing on Whole Slide Images (WSIs) to perform pixel-level segmentation.
+Training Data: Our model was trained on Camelyon 16, specifically using data obtained from Radboud University Medical Center.
+Uncertainty Measurement: To evaluate the model's uncertainty, we utilized a diverse set of training and test sets sourced from various medical centers.
 ### Results
 
 Our pipeline demonstrates that using fewer annotated samples can still yield higher segmentation performance. This is achieved by focusing on out-of-domain areas identified through model uncertainty measurements.
@@ -40,7 +44,7 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
      ```bash
        python3 nnunet_inference.py folder taskname 
 
- 4. **Compute uncertainty on new domain**:
+ 4. **Creat data from the area that model is the most uncertain about**:
     ```bash
        python3 uncertainty_sampling.py
 5. **Retrain the egmentation network with in-domain and out-of-domain samples**:
@@ -52,8 +56,5 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 
     
 ## Quickstart guide
-
-The collaborative is based on certainty and is flexible to adapt it to the certainty of your choice. We suggest to use nnunet segmentation with five folds and apply on your 
-
-
+The framework is modular and adaptable. We recommend using nnUNet with five-folds for segmentation and applying your specific uncertainty measurements for maximum effectiveness.
 
