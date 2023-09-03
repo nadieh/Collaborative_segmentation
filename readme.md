@@ -26,32 +26,33 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 
 > **Note**: This pipeline is flexible; you can substitute nnUNet with any other network that provides uncertainty measurements.
 
-[nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
-![Overview](images/overview.PNG)
+
 
 ### Quickstart Guide
 
 1. **Prepare Your Dataset**:  
    ```bash
    python3 create_training.py
-
-2. **Train the ensembles of the segmentation network**:
+2. **Install nnunet following this link**:
+ [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
+![Overview](images/overview.PNG)
+3. **Train the ensembles of the segmentation network**:
    
    ```bash
    nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0 to 4
    
- 3. **Compute uncertainty on new domain**:
+ 4. **Compute uncertainty on new domain**:
      ```bash
        python3 nnunet_inference.py folder taskname 
 
- 4. **Creat data from the area that model is the most uncertain about**:
+ 5. **Creat data from the area that model is the most uncertain about**:
     ```bash
        python3 uncertainty_sampling.py
-5. **Retrain the egmentation network with in-domain and out-of-domain samples**:
+6. **Retrain the egmentation network with in-domain and out-of-domain samples**:
    ```bash
       nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0
    
- 6. **Test**:
+ 7. **Test**:
    ```bash
      python3 nnunet_inference.py folder taskname
 
