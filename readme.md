@@ -37,7 +37,7 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
    python3 create_training.py
 
 3. **Train the ensembles of the segmentation network**:
-   To set up nnUNet, follow the instructions in the linked repository:
+Before proceeding, ensure nnUNet is set up by following the instructions in this repository:
  [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
 
    ```bash
