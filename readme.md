@@ -35,11 +35,10 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 1. **Prepare Your Dataset**:  
    ```bash
    python3 create_training.py
-2. **Install nnunet following this link**:
+2. **To set up nnUNet, follow the instructions in the linked repository**:
  [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
 
 3. **Train the ensembles of the segmentation network**:
-   
    ```bash
    nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0 to 4
    
@@ -53,8 +52,8 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
  6. **Retrain the egmentation network with in-domain and out-of-domain samples**:
    ```bash
       nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0
-   
- 7. **Test**:
+
+ 6. **Test**:
    ```bash
      python3 nnunet_inference.py folder taskname
 
