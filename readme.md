@@ -46,10 +46,10 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
      ```bash
        python3 nnunet_inference.py folder taskname 
 
- 5. **Creat data from the area that model is the most uncertain about**:
+ 5. **Create data from the area that the model is the most uncertain about**:
     ```bash
        python3 uncertainty_sampling.py
- 6. **Retrain the egmentation network with in-domain and out-of-domain samples**:
+ 6. **Retrain the segmentation network with in-domain and out-of-domain samples**:
    ```bash
       nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0
 
