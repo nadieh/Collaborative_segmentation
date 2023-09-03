@@ -41,18 +41,18 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 3. **Train the ensembles of the segmentation network**:
    ```bash
    nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0 to 4
-   
+   ```
  4. **Compute uncertainty on new domain**:
      ```bash
-       python3 nnunet_inference.py folder taskname 
-
+       python3 nnunet_inference.py folder taskname ```
  5. **Create data from the area that the model is the most uncertain about**:
     ```bash
        python3 uncertainty_sampling.py
+    ```
  6. **Retrain the segmentation network with in-domain and out-of-domain samples**:
    ```bash
       nnunet plan_train task_name  root --network 2d --planner3d None --planner2d ExperimentPlanner2D_v21_RGB_scaleTo_0_1_bs8_ps512 --plans nnUNet_RGB_scaleTo_0_1_bs8_ps512 --trainer nnUNetTrainerV2_BN --fold 0
-
+```
  6. **Test**:
    ```bash
      python3 nnunet_inference.py folder taskname
