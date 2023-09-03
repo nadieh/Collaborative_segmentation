@@ -8,6 +8,9 @@ This project introduces a novel human-in-the-loop deep learning pipeline for enh
 - **Efficiency and Accuracy**: Utilizes per-pixel and local-level model uncertainty to guide the annotation process.
 - **Informed Decision-making**: Provides pathologists with valuable insights into the model's limitations.
 - **Out-of-Domain Handling**: Specifically designed to handle Out-of-Domain (OOD) scenarios commonly encountered in medical data.
+
+  ![Overview](images/overview.PNG)
+
 ### Data
 [Camelyon](https://camelyon17.grand-challenge.org/)
 In our study, we employed the Camelyon dataset, focusing on Whole Slide Images (WSIs) to perform pixel-level segmentation.
@@ -25,7 +28,6 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 - **Uncertainty Measurements**: Incorporates uncertainty to identify and correct misclassifications.
 
 > **Note**: This pipeline is flexible; you can substitute nnUNet with any other network that provides uncertainty measurements.
-![Overview](images/overview.PNG)
 
 
 ### Quickstart Guide
