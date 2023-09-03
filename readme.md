@@ -25,7 +25,7 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
 - **Uncertainty Measurements**: Incorporates uncertainty to identify and correct misclassifications.
 
 > **Note**: This pipeline is flexible; you can substitute nnUNet with any other network that provides uncertainty measurements.
-
+![Overview](images/overview.PNG)
 
 
 ### Quickstart Guide
@@ -35,7 +35,7 @@ The pipeline employs five ensemble models of an adapted version of nnUNet, speci
    python3 create_training.py
 2. **Install nnunet following this link**:
  [nnUNet for Pathology](https://github.com/DIAGNijmegen/nnUNet-for-pathology/tree/nnunet_for_pathology_v1)
-![Overview](images/overview.PNG)
+
 3. **Train the ensembles of the segmentation network**:
    
    ```bash
