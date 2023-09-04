@@ -48,6 +48,7 @@ Before proceeding, ensure nnUNet is set up by following the instructions in this
        python3 nnunet_inference.py folder taskname ```
  6. **Create data from the area that the model is the most uncertain about**:
     ```bash
+       python3 uncertainty_csv.py
        python3 uncertainty_sampling.py
     ```
  7. **Retrain the segmentation network with in-domain and out-of-domain samples**:
