@@ -9,7 +9,7 @@ import scipy.ndimage
 import scipy.spatial.distance
 import glob
 import pandas as pd
-
+# set refrence path, image path and uncertaity path and segmentation
 
 current_os = "w" if os.name == "nt" else "l"
 other_os = "l" if current_os == "w" else "w"
@@ -104,7 +104,7 @@ task = 'task_name'
 
 patch_size =[1024, 1024]
 spacing = 1
-plots = 6
+
 
 for center in ['umcu','rumc',  'cwz', 'lpon','rst' ]:
     data = []
@@ -129,8 +129,7 @@ for center in ['umcu','rumc',  'cwz', 'lpon','rst' ]:
                 patch_im = im.get_patch(x,y, patch_size[0], patch_size[1], relative= True,spacing = spacing)
                 if np.all(patch_unc==0):
                     continue
-                #if (np.sum(patch_im==0)/3)>0.20*patch_size[0]*patch_size[1]:
-                #    continue
+
                 mask_w, mask_b = remove_white_background(patch_im)
                 maximum_uncertainty = np.max(patch_unc)
                 max_uncertain = np.sum(patch_unc>(maximum_uncertainty*0.8))
@@ -144,9 +143,7 @@ for center in ['umcu','rumc',  'cwz', 'lpon','rst' ]:
 
                 if (np.sum(mask_b==0)<0.60*patch_size[0]*patch_size[0]):
                     continue 
-                #data.append({'filename':filename, 'image': patch_im, 'uncertain': patch_unc,'segmentation':patch_seg, 'Ref': patch_ref,'abs_uncertain':abs_uncertain, 'uncertainty_score':uncertainty,'center': center,'x':x, 'y':y, 'dice': dice_array, 'cancer_ref':cancer_ref
-                #             , 'cancer_seg':cencer_seg})
-                
+
                 if (not(cancer_seg)) and (np.sum(mask_w==0)<0.7*patch_size[0]*patch_size[1]):
 
                     continue
