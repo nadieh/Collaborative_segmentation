@@ -12,8 +12,8 @@ This project introduces a novel human-in-the-loop deep learning pipeline for enh
   ![Overview](images/overview.PNG)
 
 ### Data
-[Camelyon](https://camelyon17.grand-challenge.org/)
-Our study employed the Camelyon dataset, focusing on Whole Slide Images (WSIs) to perform pixel-level segmentation.
+
+Our study employed the [Camelyon](https://camelyon17.grand-challenge.org/) dataset, focusing on Whole Slide Images (WSIs) to perform pixel-level segmentation.
 **Training Data:** Our model was trained on Camelyon 16, specifically using data obtained from Radboud University Medical Center.
 **Uncertainty Measurement:** To evaluate the model's uncertainty, the model was tested on Camyelyon 17 including five centers
 ### Results
