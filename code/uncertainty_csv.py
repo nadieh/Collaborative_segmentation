@@ -105,11 +105,11 @@ task = 'task_name'
 patch_size =[1024, 1024]
 spacing = 1
 plots = 6
-maximum_uncertainty = 1000
+
 for center in ['umcu','rumc',  'cwz', 'lpon','rst' ]:
     data = []
-    directory_uncertain = sorted(glob.glob(convert_path(rf'B:\projects\pathology-mrifuse/nnUNet_raw_data_base/inference_results/{task}/{trainer}/training_{center}/*_uncertainty.tif')))
-    directory_seg = sorted(glob.glob(convert_path(rf'B:\projects\pathology-mrifuse/nnUNet_raw_data_base/inference_results/{task}/{trainer}/training_{center}/*_nnunet.tif')))
+    directory_uncertain = sorted(glob.glob(convert_path(rf'dir_to_uncertainty/*_uncertainty.tif')))
+    directory_seg = sorted(glob.glob(convert_path(rf'directory_to_image/*_nnunet.tif')))
 
     for seg_path, uncertain_path in zip(directory_seg, directory_uncertain):
         filename = os.path.basename(uncertain_path)
