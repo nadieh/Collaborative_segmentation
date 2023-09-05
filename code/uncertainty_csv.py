@@ -113,10 +113,9 @@ for center in ['umcu','rumc',  'cwz', 'lpon','rst' ]:
 
     for seg_path, uncertain_path in zip(directory_seg, directory_uncertain):
         filename = os.path.basename(uncertain_path)
-        print(filename)
 
-        ref_path = convert_path(rf'B://archives//breast//camelyon//CAMELYON17//masks//{filename[:-16]}_mask.tif', to =current_os)
-        im_path = convert_path(rf'B://archives//breast//camelyon//CAMELYON17//images//{filename[:-16]}.tif', to =current_os)
+        ref_path = convert_path(rf'/CAMELYON17//masks//{filename[:-16]}_mask.tif', to =current_os)
+        im_path = convert_path(rf'/CAMELYON17//images//{filename[:-16]}.tif', to =current_os)
 
         wsi_un = WholeSlideImage(uncertain_path, backend='asap')
         ref = WholeSlideImage(ref_path, backend='asap')
